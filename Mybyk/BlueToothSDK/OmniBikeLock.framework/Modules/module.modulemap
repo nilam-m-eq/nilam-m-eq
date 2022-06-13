@@ -1,0 +1,6 @@
+framework module OmniBikeLock {
+  umbrella header "OmniBikeLock.h"
+
+  export *
+  module * { export * }
+}

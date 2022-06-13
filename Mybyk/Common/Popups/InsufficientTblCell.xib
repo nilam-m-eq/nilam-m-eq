@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-Regular.ttf">
+            <string>Rubik-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InsufficientTblCell" rowHeight="36" id="KGk-i7-Jjw" customClass="InsufficientTblCell" customModule="Mybyk" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insufficient Balance" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClF-TO-RSy">
+                        <rect key="frame" x="0.0" y="8" width="262" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="v5I-j9-U2G"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
+                        <color key="textColor" name="Color_N_Dark500"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL4-Im-w8g">
+                        <rect key="frame" x="270" y="8" width="50" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="R7M-JX-TQf"/>
+                            <constraint firstAttribute="width" constant="50" id="vUy-Wr-xFl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
+                        <color key="textColor" name="Color_N_Dark900"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="OL4-Im-w8g" firstAttribute="leading" secondItem="ClF-TO-RSy" secondAttribute="trailing" constant="8" id="5gG-6X-k9z"/>
+                    <constraint firstItem="ClF-TO-RSy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DaQ-pW-gQN"/>
+                    <constraint firstAttribute="trailing" secondItem="OL4-Im-w8g" secondAttribute="trailing" id="Gav-G5-2xn"/>
+                    <constraint firstItem="ClF-TO-RSy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="M5C-2F-uxK"/>
+                    <constraint firstItem="ClF-TO-RSy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Sjt-fU-VNU"/>
+                    <constraint firstAttribute="bottom" secondItem="ClF-TO-RSy" secondAttribute="bottom" constant="8" id="a56-Te-Nn3"/>
+                    <constraint firstItem="OL4-Im-w8g" firstAttribute="centerY" secondItem="ClF-TO-RSy" secondAttribute="centerY" id="lCA-Ru-QTM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblAmount" destination="OL4-Im-w8g" id="VdE-Yn-lbn"/>
+                <outlet property="lblTitle" destination="ClF-TO-RSy" id="R6J-ut-pCP"/>
+            </connections>
+            <point key="canvasLocation" x="131.19999999999999" y="92.364532019704441"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Color_N_Dark500">
+            <color red="0.33300000429153442" green="0.33300000429153442" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Color_N_Dark900">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

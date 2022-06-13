@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>130616345014-8jrhi1dp265bd5l8bfk239rq8f3uk7sr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.130616345014-8jrhi1dp265bd5l8bfk239rq8f3uk7sr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>130616345014-gik830gnnmatgo1j9s9m44asljp1tdh6.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBMW4v-xjaASxyze_LqovzHdAWygVeMJNQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>130616345014</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>in.mybyk.smartbike</string>
+	<key>PROJECT_ID</key>
+	<string>smartk-bike-push-notifications</string>
+	<key>STORAGE_BUCKET</key>
+	<string>smartk-bike-push-notifications.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:130616345014:ios:dab6194e20013cf41d0117</string>
+	<key>DATABASE_URL</key>
+	<string>https://smartk-bike-push-notifications.firebaseio.com</string>
+</dict>
+</plist>
