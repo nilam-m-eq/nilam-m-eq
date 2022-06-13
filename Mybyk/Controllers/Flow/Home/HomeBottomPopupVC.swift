@@ -314,10 +314,10 @@ class HomeBottomPopupVC: CommonViewController
                 }*/
                 let window = UIApplication.shared.windows.first
                 let topPadding = window!.safeAreaInsets.top
-                let bottomPadding = window!.safeAreaInsets.bottom
+             //   let bottomPadding = window!.safeAreaInsets.bottom
                 
                 print("TOP PAdding",topPadding)
-                print("Bottom Padding",bottomPadding)
+               // print("Bottom Padding",bottomPadding)
                 
                // print("TOP LAYOUT",self!.view.safeAreaInsets.top)
                 
