@@ -622,8 +622,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1665"
-            endingLineNumber = "1665"
+            startingLineNumber = "1670"
+            endingLineNumber = "1670"
             landmarkName = "addSubscriptionPlanAPICall()"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,8 +878,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1693"
-            endingLineNumber = "1693"
+            startingLineNumber = "1698"
+            endingLineNumber = "1698"
             landmarkName = "addSubscriptionPlanAPICall()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1022,8 +1022,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1333"
-            endingLineNumber = "1333"
+            startingLineNumber = "1338"
+            endingLineNumber = "1338"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1038,8 +1038,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1340"
-            endingLineNumber = "1340"
+            startingLineNumber = "1345"
+            endingLineNumber = "1345"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1054,8 +1054,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1328"
-            endingLineNumber = "1328"
+            startingLineNumber = "1333"
+            endingLineNumber = "1333"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1070,8 +1070,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1301"
-            endingLineNumber = "1301"
+            startingLineNumber = "1306"
+            endingLineNumber = "1306"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,8 +1086,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1305"
-            endingLineNumber = "1305"
+            startingLineNumber = "1310"
+            endingLineNumber = "1310"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1102,8 +1102,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1310"
-            endingLineNumber = "1310"
+            startingLineNumber = "1315"
+            endingLineNumber = "1315"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1726,8 +1726,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1505"
-            endingLineNumber = "1505"
+            startingLineNumber = "1510"
+            endingLineNumber = "1510"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1742,8 +1742,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1572"
-            endingLineNumber = "1572"
+            startingLineNumber = "1577"
+            endingLineNumber = "1577"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1758,8 +1758,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1586"
-            endingLineNumber = "1586"
+            startingLineNumber = "1591"
+            endingLineNumber = "1591"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2432,7 +2432,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "67">
+                  offsetFromSymbolStart = "84">
                </Location>
                <Location
                   uuid = "D057436C-D7DE-4838-937C-F36D7AF96803 - 7decbec488896eb0"
@@ -2447,7 +2447,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "95">
+                  offsetFromSymbolStart = "116">
                </Location>
                <Location
                   uuid = "D057436C-D7DE-4838-937C-F36D7AF96803 - 9089dab8445c7dc1"
@@ -2477,7 +2477,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "15">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   uuid = "D057436C-D7DE-4838-937C-F36D7AF96803 - 18a1de5a70b0f894"
@@ -2492,7 +2492,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "734">
+                  offsetFromSymbolStart = "688">
                </Location>
                <Location
                   uuid = "D057436C-D7DE-4838-937C-F36D7AF96803 - bb82aa598eb279ee"
@@ -2507,7 +2507,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "691">
+                  offsetFromSymbolStart = "664">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2846,38 +2846,6 @@
             endingLineNumber = "267"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B6923723-B36E-4690-BC6A-1BB7CC9983C7 - bf5aa81c0b272f97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Mybyk.HomeBottomPopupVC.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Mybyk"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/WorkingCopyMybyk/mybyk-smart-app-ios-2021/Mybyk/Controllers/Flow/Home/HomeBottomPopupVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "10101">
-               </Location>
-               <Location
-                  uuid = "B6923723-B36E-4690-BC6A-1BB7CC9983C7 - bf5aa81c0b272f97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Mybyk.HomeBottomPopupVC.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Mybyk"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/WorkingCopyMybyk/mybyk-smart-app-ios-2021/Mybyk/Controllers/Flow/Home/HomeBottomPopupVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "267"
-                  endingLineNumber = "267"
-                  offsetFromSymbolStart = "10455">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2938,8 +2906,8 @@
             filePath = "Mybyk/Controllers/Flow/Home/Subscription Plan/SubscriptionDetailVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1528"
-            endingLineNumber = "1528"
+            startingLineNumber = "1533"
+            endingLineNumber = "1533"
             landmarkName = "setUIOnScreen()"
             landmarkType = "7">
          </BreakpointContent>

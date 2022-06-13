@@ -44,14 +44,14 @@ var strBLEKey = String()
 
 //MARK: - LiveURL And API EndPoints
 //
-//let BASE_URL = "https://mybyk.greenpedia.in/webservices21/v1/"
-//let strVersion = "&ios=true&version=\(AppDelegate().versionNumber)"
+let BASE_URL = "https://mybyk.greenpedia.in/webservices21/v1/"
+let strVersion = "&ios=true&version=\(AppDelegate().versionNumber)"
 
 
  //MARK: - BaseURL And API EndPoints
-
-let BASE_URL = "https://staging.mybyk.greenpedia.in/webservices21/v1/"
-let strVersion = "&ios=true&version=\(AppDelegate().versionNumber)&debug=true"
+//
+//let BASE_URL = "https://staging.mybyk.greenpedia.in/webservices21/v1/"
+//let strVersion = "&ios=true&version=\(AppDelegate().versionNumber)&debug=true"
 
 
 // MARK: - End Points of API

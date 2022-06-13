@@ -105,7 +105,7 @@ class SubscriptionDetailVC: CommonViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fontForSubCharge = UIFont(name: "Rubik Bold", size: 15.0)
+        
         
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(self.panGesture))
         gesture.delegate = self
@@ -1209,12 +1209,17 @@ extension SubscriptionDetailVC
                 let color = UIColor(named: "Color_N_Dark200")
                 let color1 = UIColor(named: "Color_Primary")
                 
-                attributedString.addAttribute(NSAttributedString.Key.font, value:fontForSubCharge!, range: NSRange.init(location: 0, length: strAmnt!.count))
-                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color1!, range: NSRange.init(location: 0, length: strAmnt!.count))
-                
-                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color!, range: NSRange(location: strAmnt!.count + 1, length: strCharge.count + 2))
-                
-                lbSubscriptionChargeValue.attributedText = attributedString
+                DispatchQueue.main.async {
+                    
+                    self.fontForSubCharge = UIFont(name: "Rubik Bold", size: 15.0)
+                    attributedString.addAttribute(NSAttributedString.Key.font, value:self.fontForSubCharge!, range: NSRange.init(location: 0, length: strAmnt!.count))
+                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color1!, range: NSRange.init(location: 0, length: strAmnt!.count))
+                    
+                    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color!, range: NSRange(location: strAmnt!.count + 1, length: strCharge.count + 2))
+                    
+                    self.lbSubscriptionChargeValue.attributedText = attributedString
+                }
+              
                 
                
             }
