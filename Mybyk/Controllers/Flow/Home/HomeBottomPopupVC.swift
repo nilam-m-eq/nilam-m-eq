@@ -42,9 +42,17 @@ class HomeBottomPopupVC: CommonViewController
     var strongoingRide : String!
     // var homeVc = HomeVC()
     var checkDEviceWise = false
+    var window : UIWindow?
+    var topPadding : CGFloat!
+    var bottomPadding : CGFloat!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+         window = UIApplication.shared.windows.first
+         topPadding = window!.safeAreaInsets.top
+         bottomPadding = window!.safeAreaInsets.bottom
         
         //332
         //196
@@ -267,21 +275,19 @@ class HomeBottomPopupVC: CommonViewController
                // print("TOP",UIApplication.shared.keyWindow?.safeAreaInsets.top)
                // print(self!.view.safeAreaInsets.top)
                 
-                let window = UIApplication.shared.windows.first
-                let topPadding = window!.safeAreaInsets.top
-                let bottomPadding = window!.safeAreaInsets.bottom
                 
-                print("TOP PAdding",topPadding)
-                print("Bottom Padding",bottomPadding)
+                
+               // print("TOP PAdding",topPadding)
+               // print("Bottom Padding",bottomPadding)
                 
                // print("TOP LAYOUT",self!.view.safeAreaInsets.top)
                 
               //  print("SAFE AREA",self!.view.frame.height - self!.topLayoutGuide.length - self!.bottomLayoutGuide.length)
                 
                 
-                if  topPadding >= 44
+                if  self!.topPadding >= 44
                 {
-                    self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 50 - 208 - 34), width: self!.view.frame.width, height: 350)
+                    self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 50 - 208 - self!.bottomPadding), width: self!.view.frame.width, height: 350)
                     self!.checkDEviceWise = true
                 }
                 else
@@ -312,11 +318,11 @@ class HomeBottomPopupVC: CommonViewController
                     
                     self!.checkDEviceWise = false
                 }*/
-                let window = UIApplication.shared.windows.first
-                let topPadding = window!.safeAreaInsets.top
-             //   let bottomPadding = window!.safeAreaInsets.bottom
+                //let window = UIApplication.shared.windows.first
+              //  let topPadding = window!.safeAreaInsets.top
+               // let bottomPadding = window!.safeAreaInsets.bottom
                 
-                print("TOP PAdding",topPadding)
+               // print("TOP PAdding",topPadding)
                // print("Bottom Padding",bottomPadding)
                 
                // print("TOP LAYOUT",self!.view.safeAreaInsets.top)
@@ -324,9 +330,9 @@ class HomeBottomPopupVC: CommonViewController
               //  print("SAFE AREA",self!.view.frame.height - self!.topLayoutGuide.length - self!.bottomLayoutGuide.length)
                 
                 
-                if topPadding >= 44
+                if self!.topPadding >= 44
                 {
-                    self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 340 - 50 - 34), width: self!.view.frame.width, height: 350)
+                    self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 340 - 50 - self!.bottomPadding), width: self!.view.frame.width, height: 350)
                     self!.checkDEviceWise = true
                 }
                 else
@@ -401,7 +407,7 @@ class HomeBottomPopupVC: CommonViewController
                 //   self.view.frame = CGRect(x: 0, y: self.view.frame.height - 190, width: self.view.frame.width, height: self.view.frame.height)
                 if self.checkDEviceWise == true
                 {
-                    self.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 208 - 50 - 34), width: self.view.frame.width, height: 350)
+                    self.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 208 - 50 - self.bottomPadding), width: self.view.frame.width, height: 350)
                 }
                 else
                 {
@@ -437,7 +443,7 @@ class HomeBottomPopupVC: CommonViewController
                 // print(self.view.frame.height)
                 if self.checkDEviceWise == true
                 {
-                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 340 - 50 - 34, width: self.view.frame.width, height: 350)
+                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 340 - 50 - self.bottomPadding, width: self.view.frame.width, height: 350)
                 }
                 else
                 {
@@ -503,7 +509,7 @@ extension HomeBottomPopupVC {
         {
             if velocity.y < 0
             {
-                if y > UIScreen.main.bounds.height - 340 - 50 - 34
+                if y > UIScreen.main.bounds.height - 340 - 50 - self.bottomPadding
                 {
                     self.view.frame = CGRect(x: 0, y: y + translation.y, width: view.frame.width, height: 350)
                     recognizer.setTranslation(CGPoint.zero, in: self.view)
@@ -512,7 +518,7 @@ extension HomeBottomPopupVC {
                 }
                 else
                 {
-                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 340 - 50 - 34, width: view.frame.width, height: 350)
+                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 340 - 50 - self.bottomPadding, width: view.frame.width, height: 350)
                     recognizer.setTranslation(CGPoint.zero, in: self.view)
                     
                     self.btnExpandMore.isSelected = true
@@ -547,9 +553,9 @@ extension HomeBottomPopupVC {
                 self.btnExpandMore.isSelected = false*/
                 
                 
-                if y >  UIScreen.main.bounds.height - 208 - 50 - 34
+                if y >  UIScreen.main.bounds.height - 208 - 50 - self.bottomPadding
                 {
-                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 208 - 50 - 34, width: self.view.frame.width, height: 350)
+                    self.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 208 - 50 - self.bottomPadding, width: self.view.frame.width, height: 350)
                     self.tblHeightConst.constant = 264
                     //  self!.tblHeightConst.constant = 128
                     // self!.btnExpandMore.isSelected = true
