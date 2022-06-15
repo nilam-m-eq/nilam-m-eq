@@ -102,6 +102,7 @@ class CommonClass: NSObject {
         UserDefaults.standard.setValue(nil, forKey: "searchHistory")
         UserDefaults.standard.setValue(nil, forKey: "RideStatus")
         UserDefaults.standard.setValue(nil, forKey: "SidePopup")
+        UserDefaults.standard.removeObject(forKey: "HomeReload")
         UserDefaults.standard.synchronize()
         
         let signupVC = viewController.storyboard?.instantiateViewController(withIdentifier: "NaviController") as? NaviController

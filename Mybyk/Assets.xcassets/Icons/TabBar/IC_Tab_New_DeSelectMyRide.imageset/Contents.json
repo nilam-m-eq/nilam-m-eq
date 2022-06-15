@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Ride_Inactive-1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "Ride_Inactive@2x-1.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "Ride_Inactive@3x-1.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "Ride_Inactive.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

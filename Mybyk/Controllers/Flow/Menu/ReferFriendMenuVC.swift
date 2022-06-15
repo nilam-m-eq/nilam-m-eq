@@ -10,16 +10,21 @@ import Toaster
 
 class ReferFriendMenuVC: UIViewController
 {
+    @IBOutlet var viewBottomDetail: UIView!
+    @IBOutlet var imgClipBoard: UIImageView!
+    @IBOutlet var lbShare: UILabel!
+    @IBOutlet var imgCycle: UIImageView!
     @IBOutlet var lbReferCode: UILabel!
     @IBOutlet var lbReferCredit: UILabel!
     @IBOutlet var lbAvailableCredit: UILabel!
     @IBOutlet var lbReferSchemeSubject: UILabel!
-    
     @IBOutlet var viewNavigation: UIView!
     @IBOutlet var btnShare: UIButton!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.HideShow(ChangeVal: true)
       //  self.tabBarController?.tabBar.isHidden = true
        
         // Do any additional setup after loading the view.
@@ -51,13 +56,25 @@ class ReferFriendMenuVC: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
+    func HideShow(ChangeVal : Bool) -> Void
+    {
+        viewBottomDetail.isHidden = ChangeVal
+        imgClipBoard.isHidden = ChangeVal
+        lbShare.isHidden = ChangeVal
+        imgCycle.isHidden = ChangeVal
+        lbReferCode.isHidden = ChangeVal
+        lbReferCredit.isHidden = ChangeVal
+        lbAvailableCredit.isHidden = ChangeVal
+        lbReferSchemeSubject.isHidden = ChangeVal
+        btnShare.isHidden = ChangeVal
+    }
     @IBAction func btnBackClicked(_ sender: Any)
     {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnShareClicked(_ sender: Any)
     {
-      /*  let refer = self.storyboard?.instantiateViewController(withIdentifier: "ReferFriendVC") as! ReferFriendVC
+      /*  let refer = self.storyboard?.instantiateViewController(withIdentifier: "ReferFriendVC") as! ReferFriendVCl
         refer.strRefer = lbReferCode.text!
         refer.strReferMessage = lbReferCredit.text!
         self.addChild(refer)
@@ -102,6 +119,8 @@ extension ReferFriendMenuVC
             print(response)
             
             if response["is_error"] as! String == "false" {
+                
+                self.HideShow(ChangeVal: false)
                 
                 let dicCurrentData = response["data"] as! [String: Any]
            

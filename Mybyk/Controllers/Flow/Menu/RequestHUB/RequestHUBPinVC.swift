@@ -220,6 +220,7 @@ extension RequestHUBPinVC : searchLocationLatLongDelegateProtocol {
                 
                 let infoWindow = Bundle.main.loadNibNamed("MapPin", owner: self, options: nil)!.first! as! MapPin
                 infoWindow.lblCycleCount.isHidden = true
+                infoWindow.ingTopConstraint.constant = 15
                 marker1.iconView = infoWindow
                 
                 marker1.map = self.mapView
@@ -266,6 +267,7 @@ extension RequestHUBPinVC : searchLocationLatLongDelegateProtocol {
                 
                 let infoWindow = Bundle.main.loadNibNamed("MapPin", owner: self, options: nil)!.first! as! MapPin
                 infoWindow.lblCycleCount.isHidden = true
+                infoWindow.ingTopConstraint.constant = 15
                 marker1.iconView = infoWindow
                 
                 marker1.map = self.mapView

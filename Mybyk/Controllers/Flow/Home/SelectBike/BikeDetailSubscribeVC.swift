@@ -11,6 +11,7 @@ import CoreLocation
 import OmniBaseTool
 import OmniBikeLock
 import Lottie
+import Foundation
 
 protocol MyDataSendingDelegateProtocolSubscribed
 {
@@ -107,12 +108,21 @@ class BikeDetailSubscribeVC: CommonViewController, UIGestureRecognizerDelegate
         let dicPlanDet = arrSubscriptionDetail[0] as! [String:Any]
         lbPlanName.text = "\(dicPlanDet["subscriptionName"] as! String)"
         
-        HeightConstPlan = self.heightForView(text: "\(dicPlanDet["subscriptionName"] as! String)", font: UIFont(name: "Rubik Medium", size: 14.0)!, width: self.view.frame.width - 178)
+        
+        //DispatchQueue.main.async
+        //{
+            /*self.HeightConstPlan = self.heightForView(text: "\(dicPlanDet["subscriptionName"] as! String)", font: UIFont(name: "Rubik Medium", size: 14.0)!, width: self.view.frame.width - 178)
+            
+            
+            self.HeightConstPlanDetail = self.heightForView(text: "\(dicPlanDet["plan_expiry_msg"] as! String)", font: UIFont(name: "Rubik Medium", size: 14.0)!, width: self.view.frame.width - 178)*/
+       // }
+        
+      
         
         lbExpireIn.text = "\(dicPlanDet["plan_expiry_msg"] as! String)"
         
         //Rubik Medium 12.0
-        HeightConstPlanDetail = self.heightForView(text: "\(dicPlanDet["plan_expiry_msg"] as! String)", font: UIFont(name: "Rubik Medium", size: 14.0)!, width: self.view.frame.width - 178)
+       
         
       
         
@@ -217,23 +227,21 @@ class BikeDetailSubscribeVC: CommonViewController, UIGestureRecognizerDelegate
                     //                        self?.tableView.isScrollEnabled = true
                 }
             })*/
-            if velocity.y > 0
+            if velocity.y == 0.0
             {
                 
                 
                 UIView.animate(withDuration: 1.0) {
 
-                 //   self.view.layoutIfNeeded()
-                    
-                  //  self.view.removeFromSuperview()
+                   // self.view.layoutIfNeeded()
                     
                    // self.view.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
                   //  self.view.frame.origin.y = self.view.frame.height
 
                 } completion: { status in
 
-                   
                     self.view.removeFromSuperview()
+                   // self.view.removeFromSuperview()
                 }
                
             }
@@ -644,7 +652,8 @@ extension BikeDetailSubscribeVC {
             //btnProceedToUnlock.titleLabel?.text = "PROCEED TO UNLOCK"
             btnProceedToUnlock.setTitle("PROCEED TO UNLOCK", for:.normal)
          //   viewMainHeightConst.constant = 235 + HeightConstPlan + HeightConstPlanDetail
-            viewDetailConst.constant = 380 + HeightConstPlan + HeightConstPlanDetail
+            viewDetailConst.constant = 44 + btnProceedToUnlock.frame.origin.y + btnProceedToUnlock.frame.height + 10
+            //380 + HeightConstPlan + HeightConstPlanDetail
         }
         else
         {
@@ -655,7 +664,8 @@ extension BikeDetailSubscribeVC {
             
             
          //   viewMainHeightConst.constant = 280 + HeightConstPlan + HeightConstPlanDetail
-            viewDetailConst.constant = 430 + HeightConstPlan + HeightConstPlanDetail
+            viewDetailConst.constant = 44 + btnProceedToUnlock.frame.origin.y + btnProceedToUnlock.frame.height + 10
+            //430 + HeightConstPlan + HeightConstPlanDetail
           //  btnProceedToUnlock.titleLabel?.text = "RECHARGE NOW"
         }
        
@@ -679,7 +689,7 @@ extension BikeDetailSubscribeVC {
         }
         else
         {
-            viewDetailConst.constant = btnProceedToUnlock.frame.origin.y + btnProceedToUnlock.frame.height + 80
+            viewDetailConst.constant = btnProceedToUnlock.frame.origin.y + btnProceedToUnlock.frame.height + 100
             scrollview.isScrollEnabled = false
             
             flagCheck = true

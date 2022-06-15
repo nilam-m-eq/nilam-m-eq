@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Wallet-1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "Wallet@2x-1.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "Wallet@3x-1.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "Wallet.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

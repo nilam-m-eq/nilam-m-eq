@@ -90,8 +90,10 @@ class WalletVC: CommonViewController , UITextFieldDelegate
     {
        // self.viewDidLoad()
         
-        self.viewWillAppear(true)
+        //self.viewWillAppear(true)
       //  self.view.layoutIfNeeded()
+        
+        self.getReferCodeDetails()
     }
     override func viewDidLayoutSubviews()
     {
@@ -349,7 +351,7 @@ extension WalletVC {
     
     func getBalanceAPICall() {
         
-        CommonClass.loadProgressHudCycling(viewController: self)
+        
         APIService.sharedInstance.getWalletBalanceAPICall(dictionary: ["getBalance": "1"]) { [self] response in
             CommonClass.removeProgressHudCycling(viewController: self)
             
@@ -521,6 +523,7 @@ extension WalletVC {
                     lblReferMessage.text = dicCurrentData["referralCodeMessage"] as? String
                     strReferCode = dicCurrentData["referralCode"] as? String
                     
+                    CommonClass.loadProgressHudCycling(viewController: self)
                     self.getBalanceAPICall()
 //
 //                    lbReferCode.text = dicCurrentData["referralCode"] as? String

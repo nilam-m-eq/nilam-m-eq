@@ -35,7 +35,10 @@ class HubRequestRecieveVC: CommonViewController {
     // ********** All Button Actions ********** //
     @IBAction func ActionOk(_ sender: UIButton) {
         
-        self.navigationController?.popToRootViewController(animated: true)
+        let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+        self.navigationController?.pushViewController(tabVC, animated: true)
+        
+        /*self.navigationController?.popToRootViewController(animated: true)*/
     }
     
     
@@ -48,8 +51,8 @@ class HubRequestRecieveVC: CommonViewController {
 // ************************************ //
 extension HubRequestRecieveVC {
     
-    func setUIOnScreen() {
-        
+    func setUIOnScreen()
+    {
         btnOk.layer.cornerRadius = 10.0
         let dicSubmitRequest = dicSubmitRequestData["data"] as! [String: Any]
         

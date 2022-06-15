@@ -141,6 +141,9 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     var strSearchLat : String!
     var strSearchLog : String!
     
+    var forHomeReload = false
+    var FromSelectCycleVal : Bool!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -179,8 +182,16 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
                          name: NSNotification.Name("ReloadHome"),object: nil)
         
     }
+    func removeReloadDataFromHome()
+    {
+        UserDefaults.standard.removeObject(forKey: "HomeReload")
+       // UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+        UserDefaults.standard.synchronize()
+    }
     @IBAction func btnSubmitClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         if txtSelectDoc.text == "SELECT DOCUMENT"
         {
             let toast = Toast(text: "Please select document", delay: 0.0, duration: Delay.long)
@@ -220,6 +231,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
         self.SubmitDoc(mediaData: selectedImageData)
     }
     func SubmitDoc(mediaData: [Data]) {
+        
+        self.removeReloadDataFromHome()
         
         CommonClass.loadProgressHudCycling(viewController: self)
         APIService.sharedInstance.submitDocData(media: mediaData, dictionary: ["action":"upload", "id": strDocId!,"idNumberTrue" :"true", "requestID":"", "idNumber": txtDocIdNumber.text!]) {[self] response in
@@ -270,6 +283,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnDocSecondImageCancelClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         print(self.selectedImageName.count)
         print(self.selectedImageName[0])
        // print(self.selectedImageName[1])
@@ -327,6 +342,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnDocFirstImageCancelClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         print(self.selectedImageName.count)
         print(self.selectedImageName[0])
      //   print(self.selectedImageName[1])
@@ -372,6 +389,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnTopImageClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera)
         {
             
@@ -386,6 +405,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnSelectDocClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         print(dropDownDoc.dataSource)
         if dropDownDoc.dataSource.count == 1
         {
@@ -397,6 +418,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
         }
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        self.removeReloadDataFromHome()
         
         guard let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String else {return}
         
@@ -536,6 +559,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
+        self.removeReloadDataFromHome()
+        
         self.dismiss(animated: true)
         {
           //  self.checkUploadDoc = true
@@ -550,6 +575,9 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @objc func ReloadHome(_ notification: Notification)
     {
+       
+        
+       // forHomeReload = true
         self.selectedImageName.removeAll()
         self.selectedImageData.removeAll()
         viewDocMain.isHidden = true
@@ -570,7 +598,7 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
         {
             consMapViewBottom.constant = 0
             
-            mapView.isMyLocationEnabled = true
+            //mapView.isMyLocationEnabled = true
           //  mapView.settings.myLocationButton = false
         }
        
@@ -584,9 +612,14 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
       
         self.FromSelectBike = 0
         
-        self.homeAPICall(ValueFrom: "FromBasic", strLt: "", strlog: "")
+     
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
+        
+      //  if forHomeReload == false
+      //  {
+            self.homeAPICall(ValueFrom: "FromBasic", strLt: "", strlog: "")
+       // }
         
         self.GetCurrentAddressUsingMarkerLocation(strLat: "\(currentLocation.coordinate.latitude)", strLong: "\(currentLocation.coordinate.longitude)")
        
@@ -595,6 +628,9 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     
     override func viewDidDisappear(_ animated: Bool) {
     
+       // self.removeReloadDataFromHome()
+        
+        print("DISAPPEAR")
         if checkUploadDoc == false
         {
             viewDocMain.isHidden = true
@@ -636,51 +672,110 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
                     viewDocMain.isHidden = true
                     viewDocMainHeightConst.constant = 0
                     
+                  
+                    
                     if BackFromSearck == "CurrentLocation"
                     {
-                        if strSearchLat == ""
+                       
+                        if UserDefaults.standard.value(forKey: "HomeReload") != nil
                         {
-                            self.mapView.clear()
-                            self.locationManager.startUpdatingLocation()
+                            CommonClass.loadProgressHudCycling(viewController: self)
+                           /* NotificationCenter.default
+                                .post(name:NSNotification.Name("ReloadHome"),
+                                      object: nil,
+                                      userInfo: nil)*/
+                            
+                            //let notification =
+                          //  self.ReloadHome(notification)
+                        }
+                        else
+                        {
+                            if strSearchLat == ""
+                            {
+                                self.mapView.clear()
+                                self.locationManager.startUpdatingLocation()
+                            }
                         }
                     }
                     else if BackFromSearck == "SearchLocation"
                     {
-                        if strSearchLat != ""
+                        if UserDefaults.standard.value(forKey: "HomeReload") != nil
                         {
-                            let lat:CLLocationDegrees = Double(strSearchLat)!
-                            let lon:CLLocationDegrees = Double(strSearchLog)!
-                            
-                            let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 18.0)
-                            mapView.animate(to: camera)
-                            
-                            
-                            self.lblCurrentAddress.text = strSearchAddress
-                            
-                            FromSelectBike = Currentindex
-                            self.removeChild()
-                           
-                             self.searchAPICall(strLat: strSearchLat, strLong: strSearchLog)
+                            CommonClass.loadProgressHudCycling(viewController: self)
+                          /*  NotificationCenter.default
+                                .post(name:NSNotification.Name("ReloadHome"),
+                                      object: nil,
+                                      userInfo: nil)*/
                         }
+                        else
+                        {
+                            if strSearchLat != ""
+                            {
+                                let lat:CLLocationDegrees = Double(strSearchLat)!
+                                let lon:CLLocationDegrees = Double(strSearchLog)!
+                                
+                                let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: lon, zoom: 18.0)
+                                mapView.animate(to: camera)
+                                
+                                
+                                self.lblCurrentAddress.text = strSearchAddress
+                                
+                                FromSelectBike = Currentindex
+                                self.removeChild()
+                               
+                                 self.searchAPICall(strLat: strSearchLat, strLong: strSearchLog)
+                            }
+                        }
+                        
                     }
                     else if BackFromSearck == "Back"
                     {
-                        if strSearchLat == ""
+                        if UserDefaults.standard.value(forKey: "HomeReload") != nil
                         {
-                            if Currentindex == nil
-                            {
-                                Currentindex = 0
-                            }
-                            FromSelectBike = Currentindex
-                            
-                          //  botomPop.index = FromSelectBike
-                            
-                            self.addBottomPopupView()
+                            CommonClass.loadProgressHudCycling(viewController: self)
+                          /*  NotificationCenter.default
+                                .post(name:NSNotification.Name("ReloadHome"),
+                                      object: nil,
+                                      userInfo: nil)*/
                         }
+                        else
+                        {
+                            if strSearchLat == ""
+                            {
+                                if Currentindex == nil
+                                {
+                                    Currentindex = 0
+                                }
+                                FromSelectBike = Currentindex
+                                
+                              //  botomPop.index = FromSelectBike
+                                
+                                self.addBottomPopupView()
+                            }
+                        }
+                        
+                       
                     }
                     else
                     {
-                        self.addBottomPopupView()
+                        if UserDefaults.standard.value(forKey: "HomeReload") != nil
+                        {
+                            CommonClass.loadProgressHudCycling(viewController: self)
+                            
+                           /* NotificationCenter.default
+                                .post(name:NSNotification.Name("ReloadHome"),
+                                      object: nil,
+                                      userInfo: nil)*/
+                        }
+                        else
+                        {
+                            print("FromSelectCycleVal",FromSelectCycleVal)
+                            if FromSelectCycleVal == true
+                            {
+                                self.addBottomPopupView()
+                            }
+                           
+                        }
                     }
                     
                 }
@@ -798,6 +893,9 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     {
         super.viewWillDisappear(animated)
         
+       // self.removeReloadDataFromHome()
+        
+        print("WILL DISAPPEAR")
         if checkUploadDoc == false
         {
             viewDocMain.isHidden = true
@@ -818,6 +916,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @objc func methodOfReceivedNotification(notification: Notification)
     {
+        self.removeReloadDataFromHome()
+        
         let botomPopUploAgail = self.storyboard?.instantiateViewController(withIdentifier: "HomeUploadDocumentVc") as! HomeUploadDocumentVc
         //  botomPopUploadDoc.delegate = self
         
@@ -837,6 +937,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     
     @IBAction func btnTCClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         guard let url = URL(string: strTearmsURL ?? "") else {
           return //be safe
         }
@@ -849,6 +951,8 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnAgreeClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         self.UpdateTermsAPICall()
     }
     func UpdateTermsAPICall()
@@ -888,18 +992,22 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     }
     @IBAction func btnNearestHubBackClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
+        
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnRestrictedUploadDocumentClicked(_ sender: Any)
     {
+        self.removeReloadDataFromHome()
     }
     @IBAction func btnRestrictedHubOkayClicked(_ sender: Any)
-    {
+    {self.removeReloadDataFromHome()
 
     }
     @IBAction func ActionSearch(_ sender: UIButton)
     {
       //  self.removeChild()
+        self.removeReloadDataFromHome()
         
         let searchLoc = self.storyboard?.instantiateViewController(withIdentifier: "SearchLocationVC") as! SearchLocationVC
         searchLoc.delegate = self
@@ -927,11 +1035,15 @@ class HomeVC: CommonViewController, UploadImageDelegateProtocol,UINavigationCont
     
     @IBAction func ActionSidePopupOpen(_ sender: UIButton)
     {
+        self.removeReloadDataFromHome()
+        
         self.addSidePopupView()
         self.btnSidePopup.isHidden = true
     }
     func didTapMyLocationButton(for mapView: GMSMapView) -> Bool
     {
+        self.removeReloadDataFromHome()
+        
         guard let lat = mapView.myLocation?.coordinate.latitude,
               let lng = mapView.myLocation?.coordinate.longitude else { return false }
     
@@ -964,11 +1076,15 @@ extension HomeVC : SetindexForTopScrollTable,SetindexForTop
 {
     func SetBackTableIndex(RowVal: Int)
     {
+        self.removeReloadDataFromHome()
+        
         print(RowVal)
         RowFromBottomPopupTmpVal = RowVal
     }
     func SetBackIndex(RowVal : Int)
     {
+        self.removeReloadDataFromHome()
+        
         print(RowVal)
         RowFromBottomPopupTmpVal1 = RowVal
     }
@@ -977,6 +1093,7 @@ extension HomeVC : searchLocationLatLongDelegateProtocol
 {
     func sendSearchLocationLatLong(strLat: String, strLong: String, strAddress: String, strCheckFromSearchLocation: String)
     {
+        self.removeReloadDataFromHome()
         
         SearchLocation = strCheckFromSearchLocation
     
@@ -1021,6 +1138,8 @@ extension HomeVC {
     
     func setUIOnScreen()
     {
+        self.removeReloadDataFromHome()
+        
         consMapViewBottom.constant = 0
         locationManager.delegate = self
 
@@ -1062,6 +1181,8 @@ extension HomeVC {
     }
     func addRequestHubPopup() -> Void
     {
+        self.removeReloadDataFromHome()
+        
         mapView.isMyLocationEnabled = false
      //   mapView.settings.myLocationButton = false
         
@@ -1090,6 +1211,8 @@ extension HomeVC {
     }
     func addSidePopupView()
     {
+        self.removeReloadDataFromHome()
+        
         let sidePop = self.storyboard?.instantiateViewController(withIdentifier: "HomeSidePopupVC") as! HomeSidePopupVC
         sidePop.btnSidePopup = btnSidePopup
         print(left_popups_latlong)
@@ -1106,6 +1229,9 @@ extension HomeVC {
     
     func addBottomPopupView()
     {
+       self.removeReloadDataFromHome()
+        CommonClass.loadProgressHudCycling(viewController: self)
+       // CommonClass.removeProgressHudCycling(viewController: self)
         if UserDefaults.standard.value(forKey: "ValueRequest") != nil
         {
             RequestHub.willMove(toParent: nil)
@@ -1338,13 +1464,17 @@ extension HomeVC {
         self.view.addSubview(botomPop.view)
         botomPop.didMove(toParent: self)
         
+        
+        
         let height = view.frame.height
         let width  = view.frame.width
         botomPop.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height )
-        
+        CommonClass.removeProgressHudCycling(viewController: self)
     }
     
     func openGoogleMap(index: Int) {
+        
+        self.removeReloadDataFromHome()
         
         let dicHub = self.arrAllHubList[index] as! [String: Any]
         
@@ -1374,6 +1504,8 @@ extension HomeVC {
         
         //     self.mapView.clear()
         
+       // self.removeReloadDataFromHome()
+        self.removeReloadDataFromHome()
         print(self.arrAllHubList)
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
@@ -1452,6 +1584,8 @@ extension HomeVC {
     func setAllHubOnMapAfterTap() {
         
         //        self.mapView.clear()
+        
+        self.removeReloadDataFromHome()
         
         var marker = GMSMarker()
         var bounds = GMSCoordinateBounds()
@@ -1539,7 +1673,10 @@ extension HomeVC {
 // MARK:- Location Manager Delegate Methods
 extension HomeVC: CLLocationManagerDelegate {
     
-    func showLocationAccessAlert() {
+    func showLocationAccessAlert()
+    {
+        self.removeReloadDataFromHome()
+        
         let alertController = UIAlertController(title: "Location Permission Required", message: "Please enable location permissions in settings.", preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Settings", style: .default, handler: {(cAlertAction) in
             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
@@ -1552,6 +1689,8 @@ extension HomeVC: CLLocationManagerDelegate {
     }
     func checkLocationAuthorizationStatus()
     {
+        self.removeReloadDataFromHome()
+        
         let status = CLLocationManager.authorizationStatus()
         print(status.rawValue)
         
@@ -1599,6 +1738,7 @@ extension HomeVC: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
+        self.removeReloadDataFromHome()
         
         self.locationManager.stopUpdatingLocation()
         print("MAP COUNT................")
@@ -1664,6 +1804,8 @@ extension HomeVC: CLLocationManagerDelegate {
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager)
     {
+        self.removeReloadDataFromHome()
+        
         switch manager.authorizationStatus
         {
         case .authorizedAlways:
@@ -1687,7 +1829,7 @@ extension HomeVC: CLLocationManagerDelegate {
         //  locationManager.stopUpdatingLocation()
         //  locationManager.startUpdatingLocation()
         //CLLocationManager.locationServicesEnabled()
-        
+        self.removeReloadDataFromHome()
         print("Error: \(error.localizedDescription)")
     }
 }
@@ -1695,12 +1837,16 @@ extension HomeVC: CLLocationManagerDelegate {
 // MARK:- Google Map Delegate Methods
 extension HomeVC: GMSMapViewDelegate {
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition)
+    {
+        self.removeReloadDataFromHome()
         let coordinate = mapView.projection.coordinate(for: mapView.center)
     }
     
     func selectData(strLat : String,strLog : String,indexVal : Int) -> Void
     {
+        self.removeReloadDataFromHome()
+        
         self.removeChild()
         
         self.GetCurrentAddressUsingMarkerLocation(strLat: String(strLat), strLong: String(strLog))
@@ -1874,6 +2020,8 @@ extension HomeVC: GMSMapViewDelegate {
     }
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
     {
+        self.removeReloadDataFromHome()
+        
         checkUploadDoc = false
         viewDocMain.isHidden = true
         viewDocMainHeightConst.constant = 0
@@ -2084,6 +2232,8 @@ extension HomeVC {
     
     func GetCurrentAddressUsingMarkerLocation(strLat : String , strLong : String)
     {
+       // self.removeReloadDataFromHome()
+        self.removeReloadDataFromHome()
         self.locationManager.stopUpdatingLocation()
         let location: CLLocation?
         //locations.last!
@@ -2138,6 +2288,7 @@ extension HomeVC {
     }
     func homeAPICall(ValueFrom: String,strLt: String,strlog: String)
     {
+       // self.removeReloadDataFromHome()
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
         print(currentLocation.coordinate.latitude)
@@ -2172,7 +2323,7 @@ extension HomeVC {
         print(strLat!,strLog!)
         
         APIService.sharedInstance.homeAPICall(dictionary: ["userLat": strLat!, "userLong": strLog!, "token": "\(UserDefaults.standard.value(forKey: "deviceToken") as! String)"]) { [self] response in
-            CommonClass.removeProgressHudCycling(viewController: self)
+           
             
             print(response)
             
@@ -2401,6 +2552,8 @@ extension HomeVC {
                 }
                 
                 //consMapViewBottom.constant = 0
+                CommonClass.loadProgressHudCycling(viewController: self)
+                
                 self.addBottomPopupView()
                 self.setAllHubOnMap()
             }
@@ -2426,6 +2579,7 @@ extension HomeVC {
     
     func searchAPICallFromLocationSearch(strLat: String, strLong: String)
     {
+        self.removeReloadDataFromHome()
       //  self.removeChild()
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
@@ -2556,6 +2710,9 @@ extension HomeVC {
     }
     func searchAPICall(strLat: String, strLong: String)
     {
+        self.removeReloadDataFromHome()
+        
+        print(forHomeReload)
       //  self.removeChild()
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
@@ -2651,8 +2808,16 @@ extension HomeVC {
                 
                 //self.removeChild()
                 
-                self.addBottomPopupView()
-                self.setAllHubOnMap()
+              //  if forHomeReload == true
+              //  {
+                 //   self.homeAPICall(ValueFrom: "FromBasic", strLt: "", strlog: "")
+               // }
+               // else
+              //  {
+                    self.addBottomPopupView()
+                    self.setAllHubOnMap()
+               // }
+               
                 
                 // func GetCurrentAddressUsingMarkerLocation(strLat : String , strLong : String)
                 // self.sendSearchLocationLatLong(strLat:"\(currentLocation.coordinate.latitude)", strLong: <#T##String#>, strAddress: <#T##String#>)
@@ -2688,6 +2853,8 @@ extension HomeVC {
     func mapDirectionRequestAPI(indexPath: IndexPath)
     {
         //   self.mapView.clear()
+        
+        self.removeReloadDataFromHome()
         
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
@@ -2764,6 +2931,8 @@ extension HomeVC {
         //        self.botomPopUploadDoc.willMove(toParent: nil)
         //        self.botomPopUploadDoc.view.removeFromSuperview()
         //        self.botomPopUploadDoc.removeFromParent()
+        
+        self.removeReloadDataFromHome()
         
         var currentLocation = CLLocation()
         currentLocation = locationManager.location!
@@ -3159,6 +3328,8 @@ extension HomeVC {
     //MARK: - API Call for GetDoc
     func getDocType()
     {
+        self.removeReloadDataFromHome()
+        
         //WsDocType
         //action : LOGIN
         //WsMobileBannerImage
@@ -3263,6 +3434,7 @@ extension UIViewController
         
     }
 }
+
 
 
 

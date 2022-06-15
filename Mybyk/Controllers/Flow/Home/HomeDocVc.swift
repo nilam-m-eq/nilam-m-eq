@@ -28,10 +28,16 @@ class HomeDocVc: UIViewController
     var openDocumentVc: (() -> Void)?
     
     var heightLAbel : CGFloat!
-    
+    var window : UIWindow?
+    var topPadding : CGFloat!
+    var bottomPadding : CGFloat!
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        window = UIApplication.shared.windows.first
+        topPadding = window!.safeAreaInsets.top
+        bottomPadding = window!.safeAreaInsets.bottom
         
        // self.tabBarController?.tabBar.isHidden = false
         //else if num.stringValue == "1" && dataResponce["docError"] as! String == "false" && dataResponce["docVerifyError"] as! String == "true"
@@ -76,9 +82,9 @@ class HomeDocVc: UIViewController
                    
             //    }
               
-            if  (UIApplication.shared.keyWindow?.safeAreaInsets.top)! >= 21
+            if  self!.topPadding >= 44
             {
-                self!.partialView = self!.partialView - (self!.stackView.frame.origin.y + self!.stackView.frame.height + 50 + 34)
+                self!.partialView = self!.partialView - (self!.stackView.frame.origin.y + self!.stackView.frame.height + 50 + self!.bottomPadding)
             }
             else
             {

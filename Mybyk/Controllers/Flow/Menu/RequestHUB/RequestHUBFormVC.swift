@@ -460,13 +460,13 @@ class RequestHUBFormVC: CommonViewController, UITextFieldDelegate {
 //            return
 //        }
 //        else
-        if txtAppartment.text == ""
+        if txtSociety.text == ""
         {
            
          //   self.validatiohHeight(txtField: lbNameHeightConst, val: 0)
          //   self.validatiohHeight(txtField: lnContactHeightConst, val: 0)
-            self.validatiohHeight(txtField: lbApartmentHeightConst, val: 15)
-            self.validatiohHeight(txtField: lbNoApartmentHeightConst, val: 0)
+            self.validatiohHeight(txtField: lbApartmentHeightConst, val: 0)
+            self.validatiohHeight(txtField: lbNoApartmentHeightConst, val: 15)
             self.validatiohHeight(txtField: lbLandMarkHEightConst, val: 0)
         //    self.validatiohHeight(txtField: lbAddreesslineHeightConst, val: 0)
             self.validatiohHeight(txtField: lbAreaHeightConst, val: 0)
@@ -480,12 +480,12 @@ class RequestHUBFormVC: CommonViewController, UITextFieldDelegate {
             viewAllFieldEmptyConstHeight.constant = 15
             return
         }
-        else if txtSociety.text == ""
+        else if txtAppartment.text == ""
         {
         //    self.validatiohHeight(txtField: lbNameHeightConst, val: 0)
         //    self.validatiohHeight(txtField: lnContactHeightConst, val: 0)
-            self.validatiohHeight(txtField: lbApartmentHeightConst, val: 0)
-            self.validatiohHeight(txtField: lbNoApartmentHeightConst, val: 15)
+            self.validatiohHeight(txtField: lbApartmentHeightConst, val: 15)
+            self.validatiohHeight(txtField: lbNoApartmentHeightConst, val: 0)
             self.validatiohHeight(txtField: lbLandMarkHEightConst, val: 0)
           //  self.validatiohHeight(txtField: lbAddreesslineHeightConst, val: 0)
             self.validatiohHeight(txtField: lbAreaHeightConst, val: 0)
@@ -1532,26 +1532,27 @@ extension RequestHUBFormVC {
           //  txtContact.text = DicDataFromPinVc["contact_no"] as? String
          */
         //"address": "\(txtAddress.text!)",
+     //   print(Int(txtSociety.text!)!)
+        print(txtAppartment.text!)
+        
         CommonClass.loadProgressHudCycling(viewController: self)
-        APIService.sharedInstance.submitRequestHubFormAPIWebServiceCall(media: mediaData, dictionary: ["action": "addhubrequest", "personName": "\(DicDataFromPinVc["first_name"] as! String)", "mobileNumber": "\(DicDataFromPinVc["contact_no"] as! String)", "societyName": "\(txtSociety.text!)", "numberofApartments": "\(txtAppartment.text!)", "landmark": "\(txtLandmark.text!)", "area": "\(txtArea.text!)", "stateID": "\(stateID)", "cityID": "\(cityID)", "pincode": "\(txtPincode.text!)", "message": "\(txtMessage.text!)"]) { response in
+        APIService.sharedInstance.submitRequestHubFormAPIWebServiceCall(media: mediaData, dictionary: ["action": "addhubrequest", "personName": "\(DicDataFromPinVc["first_name"] as! String)", "mobileNumber": "\(DicDataFromPinVc["contact_no"] as! String)", "societyName":  "\(txtSociety.text!)", "numberofApartments": "\(txtAppartment.text!)", "landmark": "\(txtLandmark.text!)", "area": "\(txtArea.text!)", "stateID": "\(stateID)", "cityID": "\(cityID)", "pincode": "\(txtPincode.text!)", "message": "\(txtMessage.text!)"]) { response in
             CommonClass.removeProgressHudCycling(viewController: self)
+            
             
             print(response)
             
             if response["is_error"] as! String == "false"
             {
                 
-                let toast = Toast(text: "\(response["message"] as! String)", delay: 0.0, duration: Delay.long)
-                toast.show()
+               /* let toast = Toast(text: "\(response["message"] as! String)", delay: 0.0, duration: Delay.long)
+                toast.show()*/
                 
                 self.viewAllFieldEmptyConstHeight.constant = 0
                 
-                let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
-                self.navigationController?.pushViewController(tabVC, animated: true)
-                
-              /*  let recieve = self.storyboard?.instantiateViewController(withIdentifier: "HubRequestRecieveVC") as! HubRequestRecieveVC
+               let recieve = self.storyboard?.instantiateViewController(withIdentifier: "HubRequestRecieveVC") as! HubRequestRecieveVC
                 recieve.dicSubmitRequestData = response
-                self.navigationController?.pushViewController(recieve, animated: true)*/
+                self.navigationController?.pushViewController(recieve, animated: true)
                 
                 
             /*    let dicSubmitRequest = response["message"] as!String

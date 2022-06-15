@@ -35,6 +35,7 @@ class RideDetailsVC: CommonViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewBackDetails.isHidden = true
       //  self.tabBarController?.tabBar.isHidden = true
         
     }
@@ -132,6 +133,7 @@ extension RideDetailsVC {
             
             if response["is_error"] as! String == "false"
             {
+                viewBackDetails.isHidden = false
                 
                 let dicData = response["data"] as! [String:Any]
                 let dicRideData = dicData["rideDetails"] as! [String:Any]

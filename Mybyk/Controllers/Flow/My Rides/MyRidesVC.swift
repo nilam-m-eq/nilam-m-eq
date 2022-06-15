@@ -35,13 +35,14 @@ class MyRidesVC: CommonViewController
                                        selector:#selector(ReloadView(_:)),
                          name: NSNotification.Name("ReloadMyRideVc"),object: nil)
         
-      //  self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.selectedIndex = 1
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
        // ObjTabbar.delegateTabbar = self
+        self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.selectedIndex = 1
         super.viewWillAppear(true)
         
@@ -193,7 +194,7 @@ extension MyRidesVC : UITextFieldDelegate{
     }
     func setUIOnScreen() {
         
-      //  self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.selectedIndex = 1
         txtSearch.delegate = self
         txtSearch.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
@@ -335,7 +336,7 @@ extension MyRidesVC {
     func getMyRideListAPICall(page: String)
     {
         
-       // self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
         self.tabBarController?.selectedIndex = 1
         
         if page == "1" {

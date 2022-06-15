@@ -331,6 +331,13 @@ class AddMoneyVC: CommonViewController
             lbError.text = "Field cannot be empty."
             return
         }
+        if Int((txtEnterValue.text)!)! == 0
+        {
+            viewMoneyLimitErrorConst.constant = 15
+            viewBackEnterValue.viewTextFieldErrorBorder()
+            lbError.text = "Invalid amount"
+            return
+        }
         if Int((txtEnterValue.text)!)! > 4800
         {
             viewMoneyLimitErrorConst.constant = 15
@@ -735,9 +742,10 @@ extension AddMoneyVC: UITextFieldDelegate {
     }
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-        
-        textField.text = ""
+            textField.text = ""
        
+        
+        
 //        if moneyVal > 5000
 //        {
 //            viewMoneyLimitErrorConst.constant = 15
@@ -746,6 +754,7 @@ extension AddMoneyVC: UITextFieldDelegate {
 //        {
 //            self.txtEnterValue.text = "\(moneyVal)"
 //        }
+        
         viewMoneyLimitErrorConst.constant = 0
         viewBackEnterValue.viewTextFieldActiveBorder()
         

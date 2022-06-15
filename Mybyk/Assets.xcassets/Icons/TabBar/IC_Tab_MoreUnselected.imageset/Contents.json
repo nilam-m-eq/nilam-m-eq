@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Menu_Inactive-1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "Menu_Inactive@2x-1.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "Menu_Inactive@3x-1.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "Menu_Inactive.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

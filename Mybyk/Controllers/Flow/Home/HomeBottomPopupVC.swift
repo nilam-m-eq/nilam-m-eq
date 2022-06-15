@@ -145,6 +145,8 @@ class HomeBottomPopupVC: CommonViewController
         
         // self.consMapViewBottom.constant = 0
         
+        CommonClass.loadProgressHudCycling(viewController: self)
+        
         UIView.animate(withDuration: 0.6, animations: { [weak self] in
             
             if self!.index == nil
@@ -287,11 +289,13 @@ class HomeBottomPopupVC: CommonViewController
                 
                 if  self!.topPadding >= 44
                 {
+                   // CommonClass.loadProgressHudCycling(viewController: self!)
                     self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 50 - 208 - self!.bottomPadding), width: self!.view.frame.width, height: 350)
                     self!.checkDEviceWise = true
                 }
                 else
                 {
+                  //  CommonClass.loadProgressHudCycling(viewController: self!)
                     self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 50 - 208), width: self!.view.frame.width, height: 350)
                     
                     self!.checkDEviceWise = false
@@ -302,6 +306,7 @@ class HomeBottomPopupVC: CommonViewController
                 self!.tblHeightConst.constant = 264
                 self!.btnExpandMore.isSelected = false
                 self?.tblViewHub.isScrollEnabled = false
+                CommonClass.removeProgressHudCycling(viewController: self!)
             } else {
                 //      self!.view.frame = CGRect(x: 0, y: self!.fullView, width: self!.view.frame.width, height: self!.view.frame.height - 335)
                 
@@ -332,11 +337,13 @@ class HomeBottomPopupVC: CommonViewController
                 
                 if self!.topPadding >= 44
                 {
+                  //  CommonClass.loadProgressHudCycling(viewController: self!)
                     self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 340 - 50 - self!.bottomPadding), width: self!.view.frame.width, height: 350)
                     self!.checkDEviceWise = true
                 }
                 else
                 {
+                   // CommonClass.loadProgressHudCycling(viewController: self!)
                     self!.view.frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - 340 - 50 ), width: self!.view.frame.width, height: 350)
                     self!.checkDEviceWise = false
                 }
@@ -347,6 +354,8 @@ class HomeBottomPopupVC: CommonViewController
                 self!.btnExpandMore.isSelected = true
                 
                 self?.tblViewHub.isScrollEnabled = false
+                CommonClass.removeProgressHudCycling(viewController: self!)
+                
             }
             self!.view.roundCornersWithoutRect(corners: [.topLeft, .topRight], radius: 20.0)
             

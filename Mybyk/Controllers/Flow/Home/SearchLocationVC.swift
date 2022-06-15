@@ -158,14 +158,15 @@ class SearchLocationVC: UIViewController
                 aVC.strSearchAddress = ""
                 aVC.strSearchLat = ""
                 aVC.strSearchLog = ""
+                aVC.forHomeReload = false
                 self.navigationController?.popToViewController(aVC, animated: true)
             }
-           /* else
+            else
             {
                 
                 self.navigationController?.popViewController(animated: false)
                 print("NOT HOME")
-            }*/
+            }
         }
         
        // self.navigationController?.popViewController(animated: true)
@@ -198,7 +199,7 @@ class SearchLocationVC: UIViewController
        // print(indexLocationSearch!)
         for aViewController in viewControllers
           {
-              print(aViewController)
+            //  print(aViewController)
             if aViewController is HomeVC
             {
                let aVC = aViewController as! HomeVC
@@ -218,14 +219,15 @@ class SearchLocationVC: UIViewController
                 aVC.strSearchAddress = ""
                 aVC.strSearchLat = ""
                 aVC.strSearchLog = ""
+                aVC.forHomeReload = false
                 self.navigationController?.popToViewController(aVC, animated: true)
             }
-            /*else
+            else
             {
                 
+                self.delegate?.sendSearchLocationLatLong(strLat: "", strLong: "", strAddress: "", strCheckFromSearchLocation: "")
                 self.navigationController?.popViewController(animated: false)
-                print("NOT HOME")
-            }*/
+            }
         }
         
       //  self.navigationController?.popViewController(animated: true)
@@ -563,17 +565,17 @@ extension SearchLocationVC {
                             aVC.strSearchAddress = strSearch
                             aVC.strSearchLat = "\(dicLocation["lat"] as! Double)"
                             aVC.strSearchLog = "\(dicLocation["lng"] as! Double)"
-                            
+                            aVC.forHomeReload = false
                             checkFlagCurrentLocationORNot = true
                             
                             self.navigationController?.popToViewController(aVC, animated: true)
                         }
-                        /*else
+                        else
                         {
-                            
+                            self.delegate?.sendSearchLocationLatLong(strLat: "\(dicLocation["lat"] as! Double)", strLong: "\(dicLocation["lng"] as! Double)", strAddress: strSearch, strCheckFromSearchLocation: "FromSearchLocation")
                             self.navigationController?.popViewController(animated: false)
                             print("NOT HOME")
-                        }*/
+                        }
                     }
                     
                    // self.navigationController?.popViewController(animated: true)

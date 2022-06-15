@@ -85,6 +85,7 @@ class SelectBikeVC: CommonViewController
              {
                 let aVC = aViewController as! HomeVC
                  aVC.FromSelectBike = index
+                 aVC.FromSelectCycleVal = true
                 _ = self.navigationController?.popToViewController(aVC, animated: true)
              }
           }
@@ -230,6 +231,7 @@ extension SelectBikeVC: UITableViewDelegate, UITableViewDataSource {
       
         let dicCycleData = (arrAllCycleDet[indexPath.section] as! NSArray).object(at: indexPath.row) as! [String: Any]
         
+        print(dicCycleData)
         if let unwrappedName = dicCycleData["no_cycle"] {
             print("Your username is \(unwrappedName)")
             
@@ -567,7 +569,7 @@ extension SelectBikeVC: UITableViewDelegate, UITableViewDataSource {
         if let unwrappedName = dicCycleData["no_cycle"]
         {
             print("Your username is \(unwrappedName)")
-          return 100
+          return UITableView.automaticDimension
         }
         else
         {
@@ -637,6 +639,9 @@ extension SelectBikeVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension SelectBikeVC {
     
     func selectCycleAPICall() {
+        
+        print(strStationID)
+        print(selectedCat)
         
         CommonClass.loadProgressHudCycling(viewController: self)
         APIService.sharedInstance.selectCycleAPICall(dictionary: ["idStations": strStationID, "cyclelockQRcode": "\(txtSearch.text!)", "cyclecategoryID":"\(selectedCat)"]) { [self] response in
@@ -793,20 +798,37 @@ extension SelectBikeVC {
     
     func selectCycleCategoryWiseAPICall() {
         
+        /*
+         selectedCatID = "\(dicCat["id"] as! Int)"
+         
+         selectedCat = "\(indexPath.item)"
+         */
+        print(strStationID)
+        print(selectedCatID)
+        
         CommonClass.loadProgressHudCycling(viewController: self)
         APIService.sharedInstance.selectCycleAPICall(dictionary: ["idStations": strStationID, "cyclecategoryID":selectedCatID]) { [self] response in
             CommonClass.removeProgressHudCycling(viewController: self)
             
             print(response)
             
-            if response["is_error"] as! String == "false" {
+            if response["is_error"] as! String == "false"
+            {
+                
+                /*self.arrCategory = dicSelectCycleData["cycleCategory"] as! NSArray
+                self.arrCondition = dicSelectCycleData["cycleConditionList"] as! NSArray
+                self.arrAllCycleDet = dicSelectCycleData["allcycleDetails"] as! NSArray*/
                 
                 let dicSelectCycleData = response["data"] as! [String: Any]
                 self.arrCondition = dicSelectCycleData["cycleConditionList"] as! NSArray
                 self.arrAllCycleDet = dicSelectCycleData["allcycleDetails"] as! NSArray
                 print(dicSelectCycleData)
                 
-                self.tblViewSelectBike.reloadData()
+                DispatchQueue.main.async {
+                    
+                    self.tblViewSelectBike.reloadData()
+                }
+               
             }
             else {
                 

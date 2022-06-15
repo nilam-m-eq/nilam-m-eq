@@ -45,8 +45,10 @@ import UIKit
     
     private func setUp() {
         
+       // 30 30
         swipeImage.image = UIImage(named: "IC_SwipeRight")
         swipeImage.frame = CGRect(x: frame.height + 13, y: 11, width: 31, height: 24)
+       // swipeImage.frame = CGRect(x: frame.height + 13, y: 8, width: 30, height: 30)
         self.addSubview(swipeImage)
         
         hintLabel.frame = CGRect(x: frame.height + 31 + 21, y: 0, width: frame.width - frame.height + 31 + 16, height: frame.height)
@@ -57,14 +59,15 @@ import UIKit
         hintLabel.text = hint
         //Rubik Medium 14.0
         
-        
         swipeImageView.image = image?.imageWithInsets(insetDimen: 5.0)
-        swipeImageView.frame = CGRect(x: 10, y: 5, width: 30, height: 30)
+        swipeImageView.frame = CGRect(x: 10, y: 5.5, width: 35, height: 35)
+      //  swipeImageView.frame = CGRect(x: 10, y: 5, width: 30, height: 30)
         swipeImageView.backgroundColor = UIColor.white
+        swipeImageView.layer.cornerRadius = 17.5
       //  swipeImageView.layer.cornerRadius = (frame.height - 10) / 2
-        swipeImageView.layer.cornerRadius = 15
-        swipeImageView.layer.borderColor = UIColor.clear.cgColor
-        swipeImageView.layer.borderWidth = 5
+       // swipeImageView.layer.cornerRadius = 15
+        //swipeImageView.layer.borderColor = UIColor.clear.cgColor
+        //swipeImageView.layer.borderWidth = 5
 //        swipeImageView.image?.addPadding(2.0)
         //alignmentRectInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         self.addSubview(swipeImageView)

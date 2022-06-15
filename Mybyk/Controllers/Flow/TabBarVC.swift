@@ -44,6 +44,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate
 //                UserDefaults.standard.synchronize()
 //            }
 
+            UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+            UserDefaults.standard.synchronize()
             
             NotificationCenter.default
                 .post(name:NSNotification.Name("ReloadHome"),
@@ -57,6 +59,9 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate
 //                UserDefaults.standard.removeObject(forKey: "ValueRequest")
 //                UserDefaults.standard.synchronize()
 //            }
+            UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+            UserDefaults.standard.synchronize()
+            
             NotificationCenter.default
                 .post(name:NSNotification.Name("ReloadMyRideVc"),
                       object: nil,
@@ -69,6 +74,9 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate
 //                UserDefaults.standard.removeObject(forKey: "ValueRequest")
 //                UserDefaults.standard.synchronize()
 //            }
+            UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+            UserDefaults.standard.synchronize()
+            
             NotificationCenter.default
                 .post(name:NSNotification.Name("ReloadMyWalletVc"),
                       object: nil,
@@ -81,6 +89,9 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate
 //                UserDefaults.standard.removeObject(forKey: "ValueRequest")
 //                UserDefaults.standard.synchronize()
 //            }
+            UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+            UserDefaults.standard.synchronize()
+            
             NotificationCenter.default
                 .post(name:NSNotification.Name("ReloadNotification"),
                       object: nil,
@@ -94,6 +105,9 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate
 //                UserDefaults.standard.synchronize()
 //            }
 //
+            UserDefaults.standard.setValue("ReloadData", forKey: "HomeReload")
+            UserDefaults.standard.synchronize()
+            
             NotificationCenter.default
                 .post(name:NSNotification.Name("ReloadMyMenu"),
                       object: nil,
